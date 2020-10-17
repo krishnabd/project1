@@ -1,17 +1,14 @@
 # Check out https://docs.codemagic.io/getting-started/building-a-native-ios-app/ for more information
 # Please review and update values in curly braces
-
+# Workflow setup for building Native iOS project
 workflows:
-    ios-app:
-        name: iOS App
+    ios-project: # workflow ID
+        name: iOS project # workflow name
         environment:
-            vars:
-                XCODE_WORKSPACE: "{{ ADD WORKSPACE NAME HERE }}"
-                XCODE_SCHEME: "{{ ADD SCHEME NAME HERE }}"
             xcode: latest
             cocoapods: default
         scripts:
-            - xcodebuild build -workspace "project1.xcworkspace" -scheme "project" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+            - xcodebuild build -workspace "<your_xcode_workspace>.xcworkspace" -scheme "<your_scheme>" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
         artifacts:
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+
